@@ -1,0 +1,15 @@
+logging:
+  level:
+    root: info
+    dev:
+      miku:
+        r2dbc:
+          mysql:
+            client:
+              ReactorNettyClient: info
+
+spring:
+  r2dbc:
+    url: r2dbcs:mysql://127.0.0.1:3306/play_valyria_home?ssl=true
+    username: root
+    password: 123123
