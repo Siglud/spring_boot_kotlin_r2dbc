@@ -1,21 +1,24 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "2.4.1"
-    id("io.spring.dependency-management") version "1.0.10.RELEASE"
-    kotlin("jvm") version "1.4.21"
-    kotlin("plugin.spring") version "1.4.21"
+    id("org.springframework.boot") version "2.5.6"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE"
+    kotlin("jvm") version "1.6.0-RC2"
+    kotlin("plugin.spring") version "1.6.0-RC2"
 }
 
 group = "org.acgeek"
 version = "1.0.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
+java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
     mavenLocal()
     maven {
-        url = uri("http://repo-sc.alibaba-inc.com/mvn/releases")
+        isAllowInsecureProtocol = true
+        url = uri("http://repo-sc.alibaba-inc.com/mvn/repository")
     }
+    maven { url = uri("https://maven.aliyun.com/repository/public") }
+    maven { url = uri("https://repo.spring.io/milestone") }
     mavenCentral()
 }
 
@@ -35,7 +38,6 @@ dependencies {
 tasks.withType<KotlinCompile> {
     kotlinOptions {
         freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
     }
 }
 
